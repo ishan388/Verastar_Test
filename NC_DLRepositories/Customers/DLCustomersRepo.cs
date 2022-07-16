@@ -21,5 +21,13 @@ namespace VS_DLRepositories.Customers
         {
             throw new NotImplementedException();
         }
+
+        public async Task<int> AddCustomer(Customer customer)
+        {
+            Customer newCustomer = customer;
+            await dbCtx.Customers.AddAsync(newCustomer);
+            await dbCtx.SaveChangesAsync();
+            return newCustomer.Id;
+        }
     }
 }

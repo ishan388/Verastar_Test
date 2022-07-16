@@ -40,9 +40,21 @@ namespace VS_BLRepositories.Tests
         {
             List<Customer> expected = new List<Customer>();
             expected.Add(customer);
+            expected.Add(new Customer()
+            {
+                Id = 2,
+                Firstname = "Ishan",
+                Lastname = "Malik",
+                Email = "ishan388@yahoo.com",
+                Street = "9273 Thorne Ave. ",
+                City = "Orchard Park",
+                State = "NY",
+                ZipCode = "LS31AG"
+            });
 
             mockDLRepo.Setup(svc => svc.GetAllCustomers()).ReturnsAsync(expected);
             List<Customer>? result = blRepo.GetAllCustomers().Result.DataList;
+            Assert.Equal(expected.Count, result.Count);
             result.Should().BeEquivalentTo(expected);
             mockDLRepo.Verify(svc => svc.GetAllCustomers());
         }

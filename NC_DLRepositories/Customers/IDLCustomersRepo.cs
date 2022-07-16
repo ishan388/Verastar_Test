@@ -6,5 +6,6 @@ namespace VS_DLRepositories.Customers
     {
         Task<int> UploadBulkCustomers(List<Customer> customers);
         Task<List<Customer>> GetAllCustomers();
+        Task<int> AddCustomer(Customer customer);
     }
 }
