@@ -6,5 +6,6 @@ namespace VS_BLRepositories.Customers
     public interface IBLCustomersRepo
     {
         Task<Response<int>> UploadBulkCustomers(List<Customer> customers);
+        Task<Response<Customer>> GetAllCustomers();
     }
 }
