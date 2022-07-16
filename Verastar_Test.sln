@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS_DLRepositories", "NC_DLR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS_Models", "VS_Models\VS_Models.csproj", "{F1F024AA-8489-48A5-B875-023EF9749848}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS_BLRepositories.Tests", "VS_BLRepositories.Tests\VS_BLRepositories.Tests.csproj", "{B36E446A-F69A-4EAD-B678-BDF4FDDAAFE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS_DLRepositories.Tests", "VS_DLRepositories.Tests\VS_DLRepositories.Tests.csproj", "{A0AB391A-717A-4A2B-81C3-B7936095A64D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{F1F024AA-8489-48A5-B875-023EF9749848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F024AA-8489-48A5-B875-023EF9749848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F024AA-8489-48A5-B875-023EF9749848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36E446A-F69A-4EAD-B678-BDF4FDDAAFE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36E446A-F69A-4EAD-B678-BDF4FDDAAFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36E446A-F69A-4EAD-B678-BDF4FDDAAFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36E446A-F69A-4EAD-B678-BDF4FDDAAFE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AB391A-717A-4A2B-81C3-B7936095A64D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AB391A-717A-4A2B-81C3-B7936095A64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AB391A-717A-4A2B-81C3-B7936095A64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AB391A-717A-4A2B-81C3-B7936095A64D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
