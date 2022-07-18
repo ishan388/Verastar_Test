@@ -1,1 +1,43 @@
-<p>orders works!</p>
+<h1>Orders</h1>
+<hr />
+<h4>Upload Orders</h4>
+<div *ngIf="!uploadedOrderData">
+  <input type="file" (change)="onFileChange($event)" multiple="false" />
+</div>
+<div *ngIf="uploadedOrderData">
+  <button (click)="saveImportedOrders()" class="btn btn-primary">Save</button>&nbsp;
+  <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+</div>
+<br>
+<table class='table table-striped'>
+  <tbody>
+    <tr *ngFor="let row of uploadedOrderData">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Customer Id</th>
+      <th>Status</th>
+      <th>Order Date</th>
+      <th>Required Date</th>
+      <th>Shipped Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ord of allOrders">
+      <td>{{ord.customerId}}</td>
+      <td>{{ord.status}}</td>
+      <td>{{ord.orderDate | date:'shortDate'}}</td>
+      <td>{{ord.requiredDate | date:'shortDate'}}</td>
+      <td>{{ord.shippedDate | date:'shortDate'}}</td>
+      <td><a href="#">View Items</a></td>
+    </tr>
+  </tbody>
+</table>

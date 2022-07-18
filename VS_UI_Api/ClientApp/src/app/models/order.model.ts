@@ -1,13 +1,26 @@
 import { Customer } from "./customer.model";
 import { OrderItem } from "./order-item.model";
 
+const regExpr = /(\d{2})-(\d{2})-(\d{4})/;
+const replaceStr = "$2/$1/$3";
+
 export class Order {
   id: number = 0;
   customerId: number = 0;
   status: number = 3;
   orderDate: Date = new Date();
   requiredDate: Date = new Date();
-  shippedDate: Date = new Date();
+  shippedDate: Date | null;
+
+  constructor(id: number = 0, custId: number = 0, status: number = 3,
+    oDate: string = '', reqDate: string = '', shipDate: string = '') {
+    this.id = id;
+    this.customerId = custId;
+    this.status = status;
+    this.orderDate = new Date(oDate.replace(regExpr, replaceStr));
+    this.requiredDate = new Date(reqDate.replace(regExpr, replaceStr));
+    this.shippedDate = (shipDate?.length > 0) ? new Date(shipDate.replace(regExpr, replaceStr)) : null;
+  }
 
   customer: Customer = new Customer();
   orderItems: OrderItem[] = [];

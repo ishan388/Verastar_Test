@@ -66,8 +66,8 @@ namespace VS_DLRepositories.Tests
                 foreach (Order o in result)
                 {
                     Assert.Contains(o.Id, orders.Select(x => x.Id));
-                    Assert.Contains(o.CustomerId, orders.Select(x => x.CustomerId));
                     Assert.Contains(o.Status, orders.Select(x => x.Status));
+                    Assert.Contains(o.CustomerId, orders.Select(x => x.CustomerId));
                     Assert.Contains(o.OrderDate, orders.Select(x => x.OrderDate));
                     Assert.Contains(o.RequiredDate, orders.Select(x => x.RequiredDate));
                     Assert.Contains(o.ShippedDate, orders.Select(x => x.ShippedDate));

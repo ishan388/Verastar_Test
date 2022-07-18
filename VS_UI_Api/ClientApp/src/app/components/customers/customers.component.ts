@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Customer } from '../../models/customer.model';
 import { CustomersService } from '../../services/customers.service';
-import { XLSXService } from '../../services/xlsx.service';
 const { read, write, utils } = XLSX;
 
 @Component({
@@ -36,7 +35,6 @@ export class CustomersComponent implements OnInit {
 
       /* fill data */
       this.uploadedCustomerData = (XLSX.utils.sheet_to_json(ws, { header: 1 }));
-      console.log(this.uploadedCustomerData);
     }
     evt.target.value = null;
   }
@@ -58,9 +56,7 @@ export class CustomersComponent implements OnInit {
         this.uploadedCustomerData[i][8] as string,
       ));
     }
-    console.log(data);
     this.service.saveImportedCustomers(data).subscribe(res => {
-      console.log(res);
       this.getAllCustomers();
     });
   }
