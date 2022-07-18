@@ -5,5 +5,6 @@ namespace VS_DLRepositories.OrderItems
     public interface IDLOrderItemsRepo
     {
         Task<int> UploadBulkOrderItems(List<OrderItem> oItems);
+        Task<List<OrderItem>> GetAllOrderItems();
     }
 }
