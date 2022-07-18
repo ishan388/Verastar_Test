@@ -25,7 +25,7 @@ namespace VS_DLRepositories.Customers
                 await dbCtx.BulkInsertAsync(customers);
                 transaction.Commit();
             }
-            return await dbCtx.SaveChangesAsync();
+            return 1;
         }
 
         public async Task<int> AddCustomer(Customer customer)
