@@ -12,16 +12,30 @@ namespace VS_BLRepositories.Tests
     {
         private IBLCustomersRepo blRepo;
         private Mock<IDLCustomersRepo> mockDLRepo = new Mock<IDLCustomersRepo>();
-        Customer customer = new Customer()
+        List<Customer> customers = new List<Customer>()
         {
-            Id = 1,
-            Firstname = "Debra",
-            Lastname = "Burks",
-            Email = "debra.burks@yahoo.com",
-            Street = "9273 Thorne Ave. ",
-            City = "Orchard Park",
-            State = "NY",
-            ZipCode = "14127"
+            new Customer()
+            {
+                Id = 1,
+                Firstname = "Debra",
+                Lastname = "Burks",
+                Email = "debra.burks@yahoo.com",
+                Street = "9273 Thorne Ave. ",
+                City = "Orchard Park",
+                State = "NY",
+                ZipCode = "14127"
+            },
+            new Customer()
+            {
+                Id = 2,
+                Firstname = "Ishan",
+                Lastname = "Malik",
+                Email = "ishan388@yahoo.com",
+                Street = "9273 Thorne Ave. ",
+                City = "Orchard Park",
+                State = "NY",
+                ZipCode = "LS31AG"
+            }
         };
 
         public BLCustomersRepoTests()
@@ -32,30 +46,19 @@ namespace VS_BLRepositories.Tests
         [Fact]
         public void UploadBulkCustomers_Test()
         {
-
+            mockDLRepo.Setup(svc => svc.UploadBulkCustomers(customers)).ReturnsAsync(customers.Count);
+            int result = blRepo.UploadBulkCustomers(customers).Result.Data;
+            Assert.Equal(customers.Count, result);
+            mockDLRepo.Verify(svc => svc.UploadBulkCustomers(customers));
         }
 
         [Fact]
         public void GetAllCustomers_Test()
         {
-            List<Customer> expected = new List<Customer>();
-            expected.Add(customer);
-            expected.Add(new Customer()
-            {
-                Id = 2,
-                Firstname = "Ishan",
-                Lastname = "Malik",
-                Email = "ishan388@yahoo.com",
-                Street = "9273 Thorne Ave. ",
-                City = "Orchard Park",
-                State = "NY",
-                ZipCode = "LS31AG"
-            });
-
-            mockDLRepo.Setup(svc => svc.GetAllCustomers()).ReturnsAsync(expected);
+            mockDLRepo.Setup(svc => svc.GetAllCustomers()).ReturnsAsync(customers);
             List<Customer>? result = blRepo.GetAllCustomers().Result.DataList;
-            Assert.Equal(expected.Count, result.Count);
-            result.Should().BeEquivalentTo(expected);
+            Assert.Equal(customers.Count, result.Count);
+            result.Should().BeEquivalentTo(customers);
             mockDLRepo.Verify(svc => svc.GetAllCustomers());
         }
     }

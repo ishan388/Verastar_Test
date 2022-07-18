@@ -15,7 +15,7 @@ namespace VS_Models
         public byte Status { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime RequiredDate { get; set; }
-        public DateTime ShippedDate { get; set; }
+        public DateTime? ShippedDate { get; set; }
 
         public virtual Customer Customer { get; set; } = null!;
         public virtual ICollection<OrderItem> OrderItems { get; set; }

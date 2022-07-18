@@ -19,12 +19,8 @@ namespace VS_DLRepositories.OrderItems
 
         public async Task<int> UploadBulkOrderItems(List<OrderItem> oItems)
         {
-            using (var transaction = dbCtx.Database.BeginTransaction())
-            {
-                await dbCtx.BulkInsertAsync(oItems);
-                transaction.Commit();
-            }
-            return 1;
+            await dbCtx.OrderItems.AddRangeAsync(oItems);
+            return await dbCtx.SaveChangesAsync();
         }
     }
 }

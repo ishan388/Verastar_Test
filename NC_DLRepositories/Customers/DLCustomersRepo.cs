@@ -20,12 +20,9 @@ namespace VS_DLRepositories.Customers
 
         public async Task<int> UploadBulkCustomers(List<Customer> customers)
         {
-            using (var transaction = dbCtx.Database.BeginTransaction())
-            {
-                await dbCtx.BulkInsertAsync(customers);
-                transaction.Commit();
-            }
-            return 1;
+            //await dbCtx.BulkInsertAsync(customers);
+            await dbCtx.Customers.AddRangeAsync(customers);
+            return await dbCtx.SaveChangesAsync();
         }
 
         public async Task<int> AddCustomer(Customer customer)
