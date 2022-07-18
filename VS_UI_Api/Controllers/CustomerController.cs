@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VS_BLRepositories.Customers;
+using VS_Models;
 
 namespace VS_UI_Api.Controllers
 {
@@ -18,6 +19,12 @@ namespace VS_UI_Api.Controllers
         public async Task<IActionResult> Get()
         {
             return Ok(await customersRepo.GetAllCustomers().ConfigureAwait(false));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(List<Customer> customers)
+        {
+            return Ok(await customersRepo.UploadBulkCustomers(customers).ConfigureAwait(false));
         }
 
     }

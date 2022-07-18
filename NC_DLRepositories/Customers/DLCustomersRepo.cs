@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCore.BulkExtensions;
+using Microsoft.EntityFrameworkCore;
 using VS_Models;
 
 namespace VS_DLRepositories.Customers
@@ -17,9 +18,14 @@ namespace VS_DLRepositories.Customers
             return await dbCtx.Customers.ToListAsync();
         }
 
-        public Task<int> UploadBulkCustomers(List<Customer> customers)
+        public async Task<int> UploadBulkCustomers(List<Customer> customers)
         {
-            throw new NotImplementedException();
+            using (var transaction = dbCtx.Database.BeginTransaction())
+            {
+                await dbCtx.BulkInsertAsync(customers);
+                transaction.Commit();
+            }
+            return await dbCtx.SaveChangesAsync();
         }
 
         public async Task<int> AddCustomer(Customer customer)

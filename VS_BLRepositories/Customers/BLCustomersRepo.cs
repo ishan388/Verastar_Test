@@ -32,7 +32,19 @@ namespace VS_BLRepositories.Customers
 
         public Task<Response<int>> UploadBulkCustomers(List<Customer> customers)
         {
-            throw new NotImplementedException();
+            Response<int> res = new Response<int>();
+            try
+            {
+                res.IsSuccess = true;
+                res.Message = "Customers added successfully";
+                res.Data = dlRepo.UploadBulkCustomers(customers).Result;
+            }
+            catch (Exception ex)
+            {
+                res.IsSuccess = false;
+                res.Message = "Some Error While Adding Customers: " + ex.Message;
+            }
+            return Task.FromResult(res);
         }
     }
 }

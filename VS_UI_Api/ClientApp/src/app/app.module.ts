@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { OrderItemsComponent } from './components/order-items/order-items.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { XLSXService } from './services/xlsx.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CustomersComponent } from './components/customers/customers.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [XLSXService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

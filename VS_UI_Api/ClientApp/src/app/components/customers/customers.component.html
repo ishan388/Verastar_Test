@@ -1,1 +1,41 @@
-<p>customers works!</p>
+<h1>Customers</h1>
+<hr />
+<h4>Upload Customers</h4>
+<div *ngIf="!uploadedCustomerData">
+  <input type="file" (change)="onFileChange($event)" multiple="false" />
+</div>
+<div *ngIf="uploadedCustomerData">
+  <button (click)="saveImportedCustomers()" class="btn btn-primary">Save</button>&nbsp;
+  <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+</div>
+<br>
+<table class='table table-striped'>
+  <tbody>
+    <tr *ngFor="let row of uploadedCustomerData">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr *ngIf="uploadedCustomerData" />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cust of allCustomers">
+      <td>{{cust.firstname}}</td>
+      <td>{{cust.lastname}}</td>
+      <td>{{cust.email}}</td>
+      <td>{{cust.city}}</td>
+      <td><a href="#">View Orders</a></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,2 +1,2 @@
-export interface OrderItem {
+export class OrderItem {
 }

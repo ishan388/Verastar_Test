@@ -25,12 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\services\xlsx.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VS_BLRepositories\VS_BLRepositories.csproj" />
     <ProjectReference Include="..\VS_Models\VS_Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\services\" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\xlsx.service.ts" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,14 +1,14 @@
 import { Customer } from "./customer.model";
 import { OrderItem } from "./order-item.model";
 
-export interface Order {
-  id: number;
-  customerId: number;
-  status: number;
-  orderDate: Date;
-  requiredDate: Date;
-  shippedDate: Date;
+export class Order {
+  id: number = 0;
+  customerId: number = 0;
+  status: number = 3;
+  orderDate: Date = new Date();
+  requiredDate: Date = new Date();
+  shippedDate: Date = new Date();
 
-  customer: Customer | undefined;
-  orderItems: OrderItem[] | undefined;
+  customer: Customer = new Customer();
+  orderItems: OrderItem[] = [];
 }
