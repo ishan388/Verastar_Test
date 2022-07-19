@@ -74,5 +74,48 @@ namespace VS_DLRepositories.Tests
 
         }
 
+
+        [Fact]
+        public void UpdateBulkOrderItems_Test()
+        {
+            using (var ctx = DbContextFactory.Create(nameof(UpdateBulkOrderItems_Test)))
+            {
+                dlRepo = new DLOrderItemsRepo(ctx);
+                _ = dlRepo.UploadBulkOrderItems(orderItems);
+
+                orderItems = new List<OrderItem>()
+                {
+                    new OrderItem()
+                    {
+                        Id = 1,
+                        Discount = 0.2m,
+                        ItemId = 11,
+                        ListPrice = 650m,
+                        OrderId=5,
+                    },
+                    new OrderItem()
+                    {
+                        Id = 2,
+                        Discount = 0.09m,
+                        ItemId = 9,
+                        ListPrice =999.99m,
+                        OrderId=9,
+                    }
+                };
+
+                _ = dlRepo.UpdateBulkOrderItems(orderItems);
+
+                foreach (OrderItem oi in orderItems)
+                {
+                    OrderItem? orderItem = ctx.OrderItems.Where(e => e.Id == oi.Id).FirstOrDefault();
+                    orderItem.Should().NotBeNull();
+                    orderItem.Discount.Should().Be(oi.Discount);
+                    orderItem.ItemId.Should().Be(oi.ItemId);
+                    orderItem.ListPrice.Should().Be(oi.ListPrice);
+                    orderItem.OrderId.Should().Be(oi.OrderId);
+                }
+            }
+        }
+
     }
 }

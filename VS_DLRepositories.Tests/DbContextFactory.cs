@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace VS_DLRepositories.Tests
 {
@@ -13,6 +14,7 @@ namespace VS_DLRepositories.Tests
         {
             var options = new DbContextOptionsBuilder<MyShopContext>()
                 .UseInMemoryDatabase(databaseName)
+                .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                 .Options;
 
             return new MyShopContext(options);

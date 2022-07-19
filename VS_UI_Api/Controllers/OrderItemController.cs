@@ -28,5 +28,11 @@ namespace VS_UI_Api.Controllers
             return Ok(await orderItemsRepo.UploadBulkOrderItems(orderItems).ConfigureAwait(false));
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Put(List<OrderItem> data)
+        {
+            return Ok(await orderItemsRepo.UploadBulkOrderItems(data).ConfigureAwait(false));
+        }
+
     }
 }

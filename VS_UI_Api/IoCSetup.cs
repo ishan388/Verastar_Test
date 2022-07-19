@@ -1,7 +1,9 @@
 ﻿using VS_BLRepositories.Customers;
+using VS_BLRepositories.CustomersOrdersItems;
 using VS_BLRepositories.OrderItems;
 using VS_BLRepositories.Orders;
 using VS_DLRepositories.Customers;
+using VS_DLRepositories.CustomersOrdersItems;
 using VS_DLRepositories.OrderItems;
 using VS_DLRepositories.Orders;
 
@@ -17,6 +19,8 @@ namespace VS_UI_Api
             builder.Services.AddScoped<IBLOrdersRepo, BLOrdersRepo>();
             builder.Services.AddScoped<IDLOrderItemsRepo, DLOrderItemsRepo>();
             builder.Services.AddScoped<IBLOrderItemsRepo, BLOrderItemsRepo>();
+            builder.Services.AddScoped<IDLCustomersOrdersItemsRepo, DLCustomersOrdersItemsRepo>();
+            builder.Services.AddScoped<IBLCustomersOrdersItemsRepo, BLCustomersOrdersItemsRepo>();
         }
     }
 }

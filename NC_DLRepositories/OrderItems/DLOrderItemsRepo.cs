@@ -17,6 +17,33 @@ namespace VS_DLRepositories.OrderItems
             return await dbCtx.OrderItems.ToListAsync();
         }
 
+        public async Task<int> UpdateBulkOrderItems(List<OrderItem> oItems)
+        {
+            using var transaction = dbCtx.Database.BeginTransaction();
+            try
+            {
+                foreach (OrderItem? item in oItems)
+                {
+                    OrderItem? orderItemtoUpdate = dbCtx.OrderItems.Where(e => e.Id == item.Id).FirstOrDefault();
+                    if (orderItemtoUpdate != null)
+                    {
+                        orderItemtoUpdate.Discount = item.Discount;
+                        orderItemtoUpdate.ItemId = item.ItemId;
+                        orderItemtoUpdate.ListPrice = item.ListPrice;
+                        orderItemtoUpdate.OrderId = item.OrderId;
+                        await dbCtx.SaveChangesAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                throw ex;
+            }
+            await transaction.CommitAsync();
+            return oItems.Count;
+        }
+
         public async Task<int> UploadBulkOrderItems(List<OrderItem> oItems)
         {
             try
@@ -29,7 +56,7 @@ namespace VS_DLRepositories.OrderItems
 
                 throw ex;
             }
-            
+
         }
     }
 }
