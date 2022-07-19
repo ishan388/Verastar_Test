@@ -34,9 +34,9 @@
     <tr *ngFor="let ord of allOrders">
       <td>{{ord.customerId}}</td>
       <td>{{ord.status}}</td>
-      <td>{{ord.orderDate | date:'shortDate'}}</td>
-      <td>{{ord.requiredDate | date:'shortDate'}}</td>
-      <td>{{ord.shippedDate | date:'shortDate'}}</td>
+      <td>{{ord.orderDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{ord.requiredDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{ord.shippedDate | date:'dd/MM/yyyy'}}</td>
       <td><a href="#">View Items</a></td>
     </tr>
   </tbody>
