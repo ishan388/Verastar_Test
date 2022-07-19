@@ -13,12 +13,15 @@ export class OrderItemsService {
   }
 
   saveImportedOrderItems(orderItems: OrderItem[]): Observable<Response<number>> {
-    debugger;
     return this.http.post<Response<number>>(this.apiPath, orderItems);
   }
 
   getAllOrderItems(): Observable<Response<OrderItem>> {
     return this.http.get<Response<OrderItem>>(this.apiPath);
+  }
+
+  updateBulkOrderItems(orderItems: OrderItem[]): Observable<Response<number>> {
+    return this.http.put<Response<number>>(this.apiPath, orderItems);
   }
 
 }

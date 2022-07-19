@@ -21,7 +21,6 @@ namespace VS_DLRepositories.Tests
                 City= "Campbell",
                 State= "CA",
                 OrderId= 1084,
-                OrderDate= new DateTime(2017,08,20),
                 OrderItemsId= 90,
                 ItemId= 5,
                 ListPrice= 1559.99m,
@@ -35,7 +34,6 @@ namespace VS_DLRepositories.Tests
                 City= "Redondo Beach",
                 State= "CA",
                 OrderId= null,
-                OrderDate= null,
                 OrderItemsId= null,
                 ItemId= null,
                 ListPrice= null,
@@ -66,5 +64,53 @@ namespace VS_DLRepositories.Tests
                 }
             }
         }
+
+        List<VM_CustomersOrdersItems1> data1 = new List<VM_CustomersOrdersItems1>()
+        {
+            new VM_CustomersOrdersItems1()
+            {
+                CustomerId= 2,
+                Fullname= "Kasha Todd",
+                Email= "kasha.todd@yahoo.com",
+                State= "CA",
+                OrderId= 1084,
+                TotalDiscount=361.2853m,
+                TotalListPrice=4056.95m
+            },
+            new VM_CustomersOrdersItems1()
+            {
+                CustomerId= 1,
+                Fullname= "Debra Burks",
+                Email= "debra.burks@yahoo.com",
+                State= "NY",
+                OrderId= 599,
+                TotalDiscount=379.8968m,
+                TotalListPrice=5118.97m
+            }
+        };
+
+        [Fact]
+        public void GetAllCustomers1_Test()
+        {
+            using (var ctx = DbContextFactory.Create())
+            {
+                dlRepo = new DLCustomersOrdersItemsRepo(ctx);
+                List<VM_CustomersOrdersItems1> result = dlRepo.GetAllData1().Result;
+
+                foreach (VM_CustomersOrdersItems1 res in data1)
+                {
+                    Assert.Contains(res.CustomerId, result.Select(x => x.CustomerId));
+                    Assert.Contains(res.Fullname, result.Select(x => x.Fullname));
+                    Assert.Contains(res.Email, result.Select(x => x.Email));
+                    Assert.Contains(res.State, result.Select(x => x.State));
+                    Assert.Contains(res.OrderId, result.Select(x => x.OrderId));
+                    Assert.Contains(res.TotalDiscount, result.Select(x => x.TotalDiscount));
+                    Assert.Contains(res.TotalListPrice, result.Select(x => x.TotalListPrice));
+                    Assert.Contains(res.FinalPrice, result.Select(x => x.FinalPrice));
+                }
+            }
+        }
+
+
     }
 }

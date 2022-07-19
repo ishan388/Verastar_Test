@@ -19,7 +19,7 @@ namespace VS_UI_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await blRepo.GetAllData().ConfigureAwait(false));
+            return Ok(await blRepo.GetAllData1().ConfigureAwait(false));
         }
 
     }

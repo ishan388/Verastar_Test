@@ -34,5 +34,22 @@ namespace VS_BLRepositories.CustomersOrdersItems
             }
             return Task.FromResult(res);
         }
+
+        public Task<Response<VM_CustomersOrdersItems1>> GetAllData1()
+        {
+            Response<VM_CustomersOrdersItems1> res = new Response<VM_CustomersOrdersItems1>();
+            try
+            {
+                res.IsSuccess = true;
+                res.Message = "list fetched successfully";
+                res.DataList = dlRepo.GetAllData1().Result.ToList();
+            }
+            catch (Exception ex)
+            {
+                res.IsSuccess = false;
+                res.Message = "Some Error While Fetching All data: " + ex.Message;
+            }
+            return Task.FromResult(res);
+        }
     }
 }
