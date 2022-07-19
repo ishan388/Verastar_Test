@@ -12,6 +12,7 @@ import { OrderItemsComponent } from './components/order-items/order-items.compon
 import { OrdersComponent } from './components/orders/orders.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { XLSXService } from './services/xlsx.service';
+import { CustomersOrdersItemsComponent } from './components/customers-orders-items/customers-orders-items.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { XLSXService } from './services/xlsx.service';
     FetchDataComponent,
     OrderItemsComponent,
     OrdersComponent,
-    CustomersComponent
+    CustomersComponent,
+    CustomersOrdersItemsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
