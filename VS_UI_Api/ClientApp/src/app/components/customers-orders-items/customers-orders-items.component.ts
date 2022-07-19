@@ -20,8 +20,8 @@ export class CustomersOrdersItemsComponent implements OnInit {
     this.cancel();
   }
 
-  async getAllData() {
-    await this.service.getAllData().subscribe(res => {
+  getAllData() {
+    this.service.getAllData().subscribe(res => {
       this.allData = res.dataList;
     });
   }
