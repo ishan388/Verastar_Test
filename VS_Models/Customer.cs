@@ -7,7 +7,7 @@ namespace VS_Models
     {
         public Customer()
         {
-            Orders = new HashSet<Order>();
+            //Orders = new HashSet<Order>();
         }
 
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace VS_Models
         public string State { get; set; } = null!;
         public string ZipCode { get; set; } = null!;
 
-        public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<Order> Orders { get; set; }
     }
 }

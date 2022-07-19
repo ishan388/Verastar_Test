@@ -30,5 +30,5 @@ export class Customer {
     this.zipCode = zip.toString();
   };
 
-  orders: Order[] = [];
+  //orders: Order[] = [];
 }

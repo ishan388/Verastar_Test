@@ -45,16 +45,18 @@ export class CustomersComponent implements OnInit {
     this.uploadedCustomerData = this.uploadedCustomerData.filter((e: string[]) => !this.allCustomers.find(c => c.email.toLowerCase() == e[4].toLowerCase()));
     let data: Customer[] = [];
     for (let i = 0; i < this.uploadedCustomerData.length; i++) {
-      data.push(new Customer(
-        this.uploadedCustomerData[i][1] as string,
-        this.uploadedCustomerData[i][2] as string,
-        this.uploadedCustomerData[i][4] as string,
-        this.uploadedCustomerData[i][3] as string,
-        this.uploadedCustomerData[i][5] as string,
-        this.uploadedCustomerData[i][6] as string,
-        this.uploadedCustomerData[i][7] as string,
-        this.uploadedCustomerData[i][8] as string,
-      ));
+      if ((this.uploadedCustomerData[i][4] as string).length > 0) {
+        data.push(new Customer(
+          this.uploadedCustomerData[i][1] as string,
+          this.uploadedCustomerData[i][2] as string,
+          this.uploadedCustomerData[i][4] as string,
+          this.uploadedCustomerData[i][3] as string,
+          this.uploadedCustomerData[i][5] as string,
+          this.uploadedCustomerData[i][6] as string,
+          this.uploadedCustomerData[i][7] as string,
+          this.uploadedCustomerData[i][8] as string,
+        ));
+      }
     }
     this.service.saveImportedCustomers(data).subscribe(res => {
       this.getAllCustomers();

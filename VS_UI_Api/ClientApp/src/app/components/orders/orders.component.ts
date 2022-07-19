@@ -1,4 +1,3 @@
-import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Order } from '../../models/order.model';
@@ -14,7 +13,6 @@ export class OrdersComponent implements OnInit {
 
   public uploadedOrderData: any;
   public allOrders: Order[] = [];
-  datePipe: DatePipe = new DatePipe('en-US');
 
   constructor(private service: OrdersService) { }
 
@@ -34,21 +32,21 @@ export class OrdersComponent implements OnInit {
 
   saveImportedOrders() {
     this.uploadedOrderData.splice(0, 1);
-    this.uploadedOrderData = this.uploadedOrderData.filter((e: string[]) => !this.allOrders.find(o => o.customerId.toString() == e[1]));
+    this.uploadedOrderData = this.uploadedOrderData.filter((e: string[]) => !this.allOrders.find(o => o.id.toString() == e[0]));
     let data: Order[] = [];
     for (let i = 0; i < this.uploadedOrderData.length; i++) {
-      data.push(new Order(
-        this.uploadedOrderData[i][0] as number,
-        this.uploadedOrderData[i][1] as number,
-        this.uploadedOrderData[i][2] as number,
-        this.uploadedOrderData[i][3] as string,
-        this.uploadedOrderData[i][4] as string,
-        this.uploadedOrderData[i][5] as string
-      ));
+      if (this.uploadedOrderData[i][0] as number > 0) {
+        data.push(new Order(
+          this.uploadedOrderData[i][0] as number,
+          this.uploadedOrderData[i][1] as number,
+          this.uploadedOrderData[i][2] as number,
+          this.uploadedOrderData[i][3] as string,
+          this.uploadedOrderData[i][4] as string,
+          this.uploadedOrderData[i][5] as string
+        ));
+      }
     }
-
     this.service.saveImportedOrders(data).subscribe(res => {
-      console.log(res);
       this.getAllOrders();
     });
   }

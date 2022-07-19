@@ -1,1 +1,39 @@
-<p>order-items works!</p>
+<h1>Order Items</h1>
+<hr />
+<h4>Upload Order Items</h4>
+<div *ngIf="!uploadedOrderItemData">
+  <input type="file" (change)="onFileChange($event)" multiple="false" />
+</div>
+<div *ngIf="uploadedOrderItemData">
+  <button (click)="saveImportedOrderItems()" class="btn btn-primary">Save</button>&nbsp;
+  <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+</div>
+<br>
+<table class='table table-striped'>
+  <tbody>
+    <tr *ngFor="let row of uploadedOrderItemData">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Item Id</th>
+      <th>List Price</th>
+      <th>Discount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ord of allOrderItems">
+      <td>{{ord.orderId}}</td>
+      <td>{{ord.itemId}}</td>
+      <td>{{ord.listPrice}}</td>
+      <td>{{ord.discount}}</td>
+    </tr>
+  </tbody>
+</table>

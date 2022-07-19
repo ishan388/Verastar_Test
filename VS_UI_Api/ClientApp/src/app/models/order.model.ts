@@ -17,11 +17,11 @@ export class Order {
     this.id = id;
     this.customerId = custId;
     this.status = status;
-    this.orderDate = new Date(oDate.replace(regExpr, replaceStr));
-    this.requiredDate = new Date(reqDate.replace(regExpr, replaceStr));
+    this.orderDate = (oDate?.length > 0) ? new Date(oDate.replace(regExpr, replaceStr)) : new Date();
+    this.requiredDate = (reqDate?.length > 0) ? new Date(reqDate.replace(regExpr, replaceStr)) : new Date();
     this.shippedDate = (shipDate?.length > 0) ? new Date(shipDate.replace(regExpr, replaceStr)) : null;
   }
 
-  customer: Customer = new Customer();
-  orderItems: OrderItem[] = [];
+  //customer: Customer = new Customer();
+  //orderItems: OrderItem[] = [];
 }

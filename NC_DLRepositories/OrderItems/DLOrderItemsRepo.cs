@@ -19,8 +19,17 @@ namespace VS_DLRepositories.OrderItems
 
         public async Task<int> UploadBulkOrderItems(List<OrderItem> oItems)
         {
-            await dbCtx.OrderItems.AddRangeAsync(oItems);
-            return await dbCtx.SaveChangesAsync();
+            try
+            {
+                await dbCtx.OrderItems.AddRangeAsync(oItems);
+                return await dbCtx.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }

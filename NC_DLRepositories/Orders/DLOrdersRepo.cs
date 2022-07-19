@@ -19,8 +19,16 @@ namespace VS_DLRepositories.Orders
 
         public async Task<int> UploadBulkOrders(List<Order> orders)
         {
-            await dbCtx.Orders.AddRangeAsync(orders);
-            return await dbCtx.SaveChangesAsync();
+            try
+            {
+                await dbCtx.Orders.AddRangeAsync(orders);
+                return await dbCtx.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
         }
     }
 }

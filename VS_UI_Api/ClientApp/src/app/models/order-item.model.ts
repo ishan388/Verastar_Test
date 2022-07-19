@@ -7,13 +7,12 @@ export class OrderItem {
   listPrice: number = 0;
   discount: number = 0;
 
-  constructor(id: number = 0, orderId: number = 0, itemId: number = 0, listPrice: number = 0, discount: number = 0) {
-    this.id = id;
+  constructor(orderId: number = 0, itemId: number = 0, listPrice: number = 0, discount: number = 0) {
     this.orderId = orderId;
     this.itemId = itemId;
     this.listPrice = listPrice;
     this.discount = discount;
   }
 
-  order: Order = new Order();
+  //order: Order = new Order();
 }
