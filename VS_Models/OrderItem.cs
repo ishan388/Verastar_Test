@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace VS_Models
+﻿namespace VS_Models
 {
     public class OrderItem
     {

@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using VS_DLRepositories.OrderItems;
 using VS_Models;
 using Xunit;

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomersOrdersItems1 } from '../../models/customers-orders-items.model';
 import { OrderItem } from '../../models/order-item.model';
 import { CustomersOrdersItemsService } from '../../services/customers-orders-items.service';
-import { OrderItemsService } from '../../services/order-items.service';
 
 @Component({
   selector: 'customers-orders-items',
@@ -14,7 +13,7 @@ export class CustomersOrdersItemsComponent implements OnInit {
   allData: CustomersOrdersItems1[] = [];
   buttonStatus: number = 1; //1 - Filter, 2 - Apply Discount, 3 - Refresh
   orderItemsForDiscount: OrderItem[] = [];
-  constructor(private service: CustomersOrdersItemsService, private oiSvc: OrderItemsService) { }
+  constructor(private service: CustomersOrdersItemsService) { }
 
   ngOnInit(): void {
     this.cancel();
@@ -39,12 +38,6 @@ export class CustomersOrdersItemsComponent implements OnInit {
       });
       this.buttonStatus = 3;
     }
-  }
-
-  saveChanges() {
-    //this.service.applyDiscounts(this.orderItemsForDiscount).subscribe(res => {
-    //  this.cancel();
-    //});
   }
 
   cancel() {

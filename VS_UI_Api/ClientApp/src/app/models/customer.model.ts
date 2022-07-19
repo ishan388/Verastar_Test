@@ -29,6 +29,4 @@ export class Customer {
     this.state = st;
     this.zipCode = zip.toString();
   };
-
-  //orders: Order[] = [];
 }

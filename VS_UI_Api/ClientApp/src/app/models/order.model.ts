@@ -1,9 +1,3 @@
-import { Customer } from "./customer.model";
-import { OrderItem } from "./order-item.model";
-
-const regExpr = /(\d{2})-(\d{2})-(\d{4})/;
-const replaceStr = "$2/$1/$3";
-
 export class Order {
   id: number = 0;
   customerId: number = 0;
@@ -27,8 +21,6 @@ export class Order {
     const date = new Date(+year, (month as unknown as number) - 1, +day);
     return date;
   }
-  //customer: Customer = new Customer();
-  //orderItems: OrderItem[] = [];
 }
 
 

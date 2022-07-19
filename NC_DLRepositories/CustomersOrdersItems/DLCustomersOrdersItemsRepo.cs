@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VS_Models.ViewModels;
+﻿using VS_Models.ViewModels;
 
 namespace VS_DLRepositories.CustomersOrdersItems
 {
@@ -76,7 +71,7 @@ namespace VS_DLRepositories.CustomersOrdersItems
 
                 throw ex;
             }
-            
+
 
         }
 

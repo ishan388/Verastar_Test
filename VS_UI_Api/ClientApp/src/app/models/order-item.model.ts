@@ -13,6 +13,4 @@ export class OrderItem {
     this.listPrice = listPrice;
     this.discount = discount;
   }
-
-  //order: Order = new Order();
 }

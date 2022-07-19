@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VS_DLRepositories.CustomersOrdersItems;
+﻿using VS_DLRepositories.CustomersOrdersItems;
 using VS_Models.Common;
 using VS_Models.ViewModels;
 
 namespace VS_BLRepositories.CustomersOrdersItems
 {
-    public class BLCustomersOrdersItemsRepo: IBLCustomersOrdersItemsRepo
+    public class BLCustomersOrdersItemsRepo : IBLCustomersOrdersItemsRepo
     {
         private IDLCustomersOrdersItemsRepo dlRepo;
 

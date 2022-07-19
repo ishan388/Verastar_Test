@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VS_BLRepositories.CustomersOrdersItems;
-using VS_Models.ViewModels;
 
 namespace VS_UI_Api.Controllers
 {

@@ -1,5 +1,4 @@
-﻿using EFCore.BulkExtensions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using VS_Models;
 
 namespace VS_DLRepositories.Customers
@@ -22,7 +21,6 @@ namespace VS_DLRepositories.Customers
         {
             try
             {
-                //await dbCtx.BulkInsertAsync(customers);
                 await dbCtx.Customers.AddRangeAsync(customers);
                 return await dbCtx.SaveChangesAsync();
             }

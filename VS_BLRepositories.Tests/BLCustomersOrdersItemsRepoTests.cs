@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Moq;
-using System;
 using System.Collections.Generic;
 using VS_BLRepositories.CustomersOrdersItems;
 using VS_DLRepositories.CustomersOrdersItems;
@@ -90,6 +89,6 @@ namespace VS_BLRepositories.Tests
             result.Should().BeEquivalentTo(data1);
             mockDLRepo.Verify(svc => svc.GetAllData1());
         }
-        
+
     }
 }
