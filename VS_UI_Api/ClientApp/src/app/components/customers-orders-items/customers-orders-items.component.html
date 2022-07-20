@@ -1,12 +1,10 @@
 <h1>All Data</h1>
 <hr />
 
-<button (click)="filterData()" class="btn btn-primary" *ngIf="buttonStatus==1">Filter Custom Data</button>&nbsp;
-<button (click)="applyDiscounts()" class="btn btn-primary" *ngIf="buttonStatus==2">Apply Discounts</button>&nbsp;
-<button (click)="cancel()" class="btn btn-secondary">
-  <span *ngIf="buttonStatus==3; else elseBlock">Refresh</span>
-  <ng-template #elseBlock>Cancel</ng-template>
-</button>
+<button (click)="filterData()" class="btn btn-primary" *ngIf="buttonStatus==1">Filter Custom Data</button>
+<button (click)="applyDiscounts()" class="btn btn-primary" *ngIf="buttonStatus==2">Apply Discounts</button>
+<button (click)="saveChanges()" class="btn btn-primary" *ngIf="buttonStatus==3">Save Changes</button>&nbsp;
+<button (click)="cancel()" class="btn btn-secondary">Cancel</button>
 
 <hr />
 <table class="table table-striped">

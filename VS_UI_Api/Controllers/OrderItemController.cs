@@ -30,7 +30,7 @@ namespace VS_UI_Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(List<OrderItem> data)
         {
-            return Ok(await orderItemsRepo.UploadBulkOrderItems(data).ConfigureAwait(false));
+            return Ok(await orderItemsRepo.UpdateBulkOrderItems(data).ConfigureAwait(false));
         }
 
     }

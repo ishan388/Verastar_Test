@@ -17,66 +17,12 @@ namespace VS_DLRepositories.Tests
                 CustomerId= 2,
                 Fullname= "Kasha Todd",
                 Email= "kasha.todd@yahoo.com",
-                City= "Campbell",
-                State= "CA",
-                OrderId= 1084,
-                OrderItemsId= 90,
-                ItemId= 5,
-                ListPrice= 1559.99m,
-                Discount= 0.10m,
-            },
-            new VM_CustomersOrdersItems()
-            {
-                CustomerId= 3,
-                Fullname= "Tameka Fisher",
-                Email= "tameka.fisher@aol.com",
-                City= "Redondo Beach",
-                State= "CA",
-                OrderId= null,
-                OrderItemsId= null,
-                ItemId= null,
-                ListPrice= null,
-                Discount= null,
-            }
-        };
-
-        [Fact]
-        public void GetAllCustomers_Test()
-        {
-            using (var ctx = DbContextFactory.Create())
-            {
-                dlRepo = new DLCustomersOrdersItemsRepo(ctx);
-                List<VM_CustomersOrdersItems> result = dlRepo.GetAllData().Result;
-
-                foreach (VM_CustomersOrdersItems res in data)
-                {
-                    Assert.Contains(res.CustomerId, result.Select(x => x.CustomerId));
-                    Assert.Contains(res.Fullname, result.Select(x => x.Fullname));
-                    Assert.Contains(res.Email, result.Select(x => x.Email));
-                    Assert.Contains(res.City, result.Select(x => x.City));
-                    Assert.Contains(res.State, result.Select(x => x.State));
-                    Assert.Contains(res.OrderId, result.Select(x => x.OrderId));
-                    Assert.Contains(res.OrderItemsId, result.Select(x => x.OrderItemsId));
-                    Assert.Contains(res.ItemId, result.Select(x => x.ItemId));
-                    Assert.Contains(res.ListPrice, result.Select(x => x.ListPrice));
-                    Assert.Contains(res.Discount, result.Select(x => x.Discount));
-                }
-            }
-        }
-
-        List<VM_CustomersOrdersItems1> data1 = new List<VM_CustomersOrdersItems1>()
-        {
-            new VM_CustomersOrdersItems1()
-            {
-                CustomerId= 2,
-                Fullname= "Kasha Todd",
-                Email= "kasha.todd@yahoo.com",
                 State= "CA",
                 OrderId= 1084,
                 TotalDiscount=361.2853m,
                 TotalListPrice=4056.95m
             },
-            new VM_CustomersOrdersItems1()
+            new VM_CustomersOrdersItems()
             {
                 CustomerId= 1,
                 Fullname= "Debra Burks",
@@ -94,9 +40,9 @@ namespace VS_DLRepositories.Tests
             using (var ctx = DbContextFactory.Create())
             {
                 dlRepo = new DLCustomersOrdersItemsRepo(ctx);
-                List<VM_CustomersOrdersItems1> result = dlRepo.GetAllData1().Result;
+                List<VM_CustomersOrdersItems> result = dlRepo.GetAllData().Result;
 
-                foreach (VM_CustomersOrdersItems1 res in data1)
+                foreach (VM_CustomersOrdersItems res in data)
                 {
                     Assert.Contains(res.CustomerId, result.Select(x => x.CustomerId));
                     Assert.Contains(res.Fullname, result.Select(x => x.Fullname));

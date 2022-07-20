@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomersOrdersItems1 } from '../../models/customers-orders-items.model';
 import { OrderItem } from '../../models/order-item.model';
 import { CustomersOrdersItemsService } from '../../services/customers-orders-items.service';
+import { OrderItemsService } from '../../services/order-items.service';
 
 @Component({
   selector: 'customers-orders-items',
@@ -13,7 +14,7 @@ export class CustomersOrdersItemsComponent implements OnInit {
   allData: CustomersOrdersItems1[] = [];
   buttonStatus: number = 1; //1 - Filter, 2 - Apply Discount, 3 - Refresh
   orderItemsForDiscount: OrderItem[] = [];
-  constructor(private service: CustomersOrdersItemsService) { }
+  constructor(private service: CustomersOrdersItemsService, private oiSvc: OrderItemsService) { }
 
   ngOnInit(): void {
     this.cancel();
@@ -40,8 +41,27 @@ export class CustomersOrdersItemsComponent implements OnInit {
     }
   }
 
+  saveChanges() {
+    this.oiSvc.getAllOrderItems().subscribe(res => {
+      this.orderItemsForDiscount = res.dataList;
+      this.orderItemsForDiscount = this.orderItemsForDiscount.filter(e => this.allData.find(d => d.orderId == e.orderId));
+      this.orderItemsForDiscount.forEach((oi, idx) => {
+        oi.listPrice -= (oi.listPrice * 0.05);
+        if (idx == this.orderItemsForDiscount.length - 1)
+          this.saveDiscounts();
+      });
+    });
+  }
+
+  saveDiscounts() {
+    this.service.applyDiscounts(this.orderItemsForDiscount).subscribe(res => {
+      this.cancel();
+    });
+  }
+
   cancel() {
     this.buttonStatus = 1;
+    this.allData = [];
     this.orderItemsForDiscount = [];
     this.getAllData();
   }

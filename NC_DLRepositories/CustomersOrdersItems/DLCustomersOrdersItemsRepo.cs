@@ -10,30 +10,7 @@ namespace VS_DLRepositories.CustomersOrdersItems
         {
             dbCtx = ctx;
         }
-
         public async Task<List<VM_CustomersOrdersItems>> GetAllData()
-        {
-            return (from c in dbCtx.Customers
-                    join o in dbCtx.Orders on c.Id equals o.CustomerId into ord
-                    from ordOrNull in ord.DefaultIfEmpty()
-                    join oi in dbCtx.OrderItems on ordOrNull.Id equals oi.OrderId into ordItms
-                    from ordItmsOrNUll in ordItms.DefaultIfEmpty()
-                    select new VM_CustomersOrdersItems()
-                    {
-                        CustomerId = c.Id,
-                        OrderId = ordOrNull.Id,
-                        City = c.City,
-                        Discount = ordItmsOrNUll.Discount,
-                        Email = c.Email,
-                        Fullname = (c.Firstname + " " + c.Lastname),
-                        ItemId = ordItmsOrNUll.ItemId,
-                        ListPrice = ordItmsOrNUll.ListPrice,
-                        OrderItemsId = ordItmsOrNUll.Id,
-                        State = c.State
-                    }).AsQueryable().ToList();
-        }
-
-        public async Task<List<VM_CustomersOrdersItems1>> GetAllData1()
         {
             try
             {
@@ -53,7 +30,7 @@ namespace VS_DLRepositories.CustomersOrdersItems
 
                 var res = qry
                     .GroupBy(g => new { g.OrderId, g.CustomerId, g.Email, g.Fullname, g.State })
-                    .Select(s => new VM_CustomersOrdersItems1()
+                    .Select(s => new VM_CustomersOrdersItems()
                     {
                         TotalListPrice = s.Sum(e => e.ListPrice),
                         TotalDiscount = s.Sum(e => (e.Discount * e.ListPrice)),
