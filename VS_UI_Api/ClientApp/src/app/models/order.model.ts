@@ -17,7 +17,7 @@ export class Order {
   }
 
   castStringToDate(str: string) {
-    const [day, month, year] = str.split('/');
+    const [day, month, year] = str.split('-');
     const date = new Date(+year, (month as unknown as number) - 1, +day);
     return date;
   }

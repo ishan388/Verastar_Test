@@ -66,7 +66,7 @@ export class OrdersComponent implements OnInit {
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
 
       /* fill data */
-      this.uploadedOrderData = (XLSX.utils.sheet_to_json(ws, { header: 1, raw: false, dateNF: 'dd/MM/yyyy' }));
+      this.uploadedOrderData = (XLSX.utils.sheet_to_json(ws, { header: 1, raw: false, dateNF: 'dd-MM-yyyy' }));
     }
     evt.target.value = null;
   }
